@@ -232,7 +232,7 @@ If you did everything correct, you should see instantaneously the argocd, then a
 
 Now please feel free to connect on your new argocd URL https://argocd.azure-bootstrapper.internal.company.com/
 
-But hey, you don't have the creds... :)
+But hey, you don't have the creds...
 
 The first one is admin, while the second you need a command. It is in a secret on argocd. To retrieve it use this command:
 ```bash

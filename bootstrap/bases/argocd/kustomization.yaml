@@ -11,7 +11,7 @@ resources:
 
 images:
   - name: quay.io/argoproj/argocd:v2.4.7
-    # newName: ghcr.io/thisisqubika/argocd:latest # This is an example of how to change the image -> if we want to have our own protected version of the image
+    # newName: ghcr.io/mateusclira/argocd:latest # This is an example of how to change the image -> if we want to have our own protected version of the image
     # newTag: v2.5.3-0
 
 patchesStrategicMerge:

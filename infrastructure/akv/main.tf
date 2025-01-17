@@ -6,7 +6,7 @@ resource "azurerm_key_vault" "main" {
   location                    = var.region
   resource_group_name         = "platform-${var.cname}"
   enabled_for_disk_encryption = true
-  tenant_id                   = "ba128b62-cd7d-4766-bcdf-dc56c2b6c7be"
+  tenant_id                   = "tenant-id"
   soft_delete_retention_days  = 7
   purge_protection_enabled    = false
 
@@ -42,7 +42,7 @@ resource "azurerm_key_vault" "main" {
   }
 
    access_policy {
-    tenant_id = "ba128b62-cd7d-4766-bcdf-dc56c2b6c7be"
+    tenant_id = "tenant-id"
     object_id = azurerm_role_assignment.argo.principal_id
 
      key_permissions = [

@@ -6,4 +6,4 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   type: git
-  url: https://github.com/thisisqubika/aks-argocd
+  url: https://github.com/mateusclira/gitops-argocd-k8s

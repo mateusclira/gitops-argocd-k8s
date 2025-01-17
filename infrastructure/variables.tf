@@ -1,7 +1,7 @@
 variable "cname" {
   description = "Company Name"
   type        = string
-  default     = "qubika"
+  default     = "my-company"
 }
 
 variable "region" {
@@ -24,5 +24,5 @@ variable "ENV_ID" {
 variable "SUBSCRIPTION_ID" {
   description = "Azure Subscription ID"
   type        = string
-  default     = "ab925f1d-59ac-4773-9362-74eb88f803f1"
+  default     = "00000000-0000-0000-0000-000000000000"
 }

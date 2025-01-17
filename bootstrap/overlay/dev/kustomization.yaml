@@ -22,7 +22,7 @@ patches:
   patch: |-
     - op: replace
       path: /spec/tls/0/hosts/0
-      value: 'argocd.azure-bootstrapper.internal.qubika.com'
+      value: 'argocd.company.com'
     - op: replace
       path: /spec/rules/0/host
-      value: 'argocd.azure-bootstrapper.internal.qubika.com'
+      value: 'argocd.company.com'

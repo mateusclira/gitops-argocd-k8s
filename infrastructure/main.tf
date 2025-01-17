@@ -1,5 +1,4 @@
 terraform {
-  # backend "azurerm" {}  ### this line would be used if the state file is stored in Azure and also used in a Pipeline
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"

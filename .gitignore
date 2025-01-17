@@ -2,7 +2,6 @@
 *.tgz
 *.dec.*
 
-# Local .terraform directories
 **/.terraform/*
 
 # .tfstate files

@@ -6,7 +6,7 @@ spec:
   # generator should be defined under overlay
   generators:
     - git:
-        repoURL: https://github.com/thisisqubika/aks-argocd.git # This repository would be created if it does not exist
+        repoURL: https://github.com/mateusclira/gitops-argocd-k8s.git # This repository would be created if it does not exist
         revision: HEAD
         directories:
           - path: "change-me"
@@ -21,7 +21,7 @@ spec:
           selfHeal: false
       project: "{{path[0]}}"
       source:
-        repoURL: https://github.com/thisisqubika/aks-argocd.git
+        repoURL: https://github.com/mateusclira/gitops-argocd-k8s.git
         targetRevision: HEAD
         path: "{{path[0]}}/{{path[1]}}" # Here we are setting the path to the application, under deployments. This is the path where the values.yaml and secrets.yaml are located
         helm:
