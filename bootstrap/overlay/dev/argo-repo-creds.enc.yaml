@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: argo-repo-creds
+    namespace: argocd
+    labels:
+        argocd.argoproj.io/secret-type: repo-creds
+type: Opaque
+stringData:
+    type: ENC[AES256_GCM,data:Y5qM,iv:IEZSS94HUxDVSQIgOxJA2SBZz18/S2Aa55x7Qvpzy6c=,tag:RVbBnddzsK/0AeHBWrPxAg==,type:str]
+    url: ENC[AES256_GCM,data:Z8reLeqHZVphf3szFMJXNdQ2ozhFn2dg8QVCtC+Ue4bTqn1GmcH4LHcP,iv:ynb0FM/LDOl4DLqRH1pB38sDYi6kI3Fw672d9CrP7qs=,tag:zjAY26vDMhLf1O6FRmoXvg==,type:str]
+    username: ENC[AES256_GCM,data:0PW7wT23tMgq67U=,iv:KgypC9doBQV640//fYjO8OYyoNT+UOikbxh07u2Vl40=,tag:u54NYc5kVIj6/ZOzMc2hwg==,type:str]
+    password: ENC[AES256_GCM,data:nGS0brG2pPxOFinw9vVq/Eein7l46CTVFn8DkW25BGdzfFv2BpNepg==,iv:Q8utIwvjQCpor9h0yNssQ6xtYa8kpvTxn+HRAU3Xoys=,tag:5ruCFuLlKK1qpZL2N7tfNA==,type:str]
+# For a real project, we should use under the stringData an url (github's url), create a github app, and then use:
+# githubAppID (should be the app id of the github app)
+# githubAppInstallationID (should be the installation id of the github app)
+# githubAppPrivateKey (should be the private key of the github app)
+# url (should be the github's url)
+# type (should be github)
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv:
+        - vault_url: https://kv-qubika.vault.azure.net
+          name: kms-qubika
+          version: 0dc8ab9e0a974f7fb6379abd6aaf1ef1
+          created_at: "2024-10-23T19:23:08Z"
+          enc: kRn41iFD_zb1UIYkGD9Utw6GubJOE0xhdCDSF4dV9qZen2ZPJdOLZlPIgCd-U9ZMszrB2ljdCLepNXXffZndrhYAqTJjwkLcVYnB8LZXGv5hZsQrYYC_pkbQcSmYIW4_KS2qVhH21UG_YzSJyjtQaNoEJct7G4uiqE2je4NNL3hUpjFkFzWpJSV8EBdLxkIPhZHwPgSHPxB0fMhC9DVRRVBTiRgKkrM-5oAW7trkLEQi079q_NlfRwPH4ofP-8r9NEQtdbcujRIQXv_N5klWQP6FuTzQMK-vUHC61Ewg_WS04c176G-ufVatVtw8PKXkv7NZwSumRl-Ygf0U3DyX8A
+    hc_vault: []
+    age: []
+    lastmodified: "2024-10-23T19:23:11Z"
+    mac: ENC[AES256_GCM,data:JUYUm+2ChwqQ+ZX33JlsiF/todbLarOYB49CaeSGq52N8gUaDplVs66BrtGNSLYFWyl5KiKKJ7DuIyEX0ytD5hulHnW9qi2i3erbZoI+wrsn4HNJD1gZET0wS4r6U6LchBUP7xNaD/g8PdAaPcz/Nou4VEaFKB4Tqp9luMaDZe0=,iv:pQA8P+FzMh+iWU99O+QBNvXJp79M3jTkczO88enKo0o=,tag:EE+ta+S2oYbPNjry214K0Q==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|global|apiKey|cfToken|privatekey|publickey)$
+    version: 3.9.0

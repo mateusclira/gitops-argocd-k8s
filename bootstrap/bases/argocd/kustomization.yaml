@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/ha/install.yaml
+  - ingress.yaml
+  - repository.yaml
+  - projects.yaml
+  - application-set.yaml
+
+images:
+  - name: quay.io/argoproj/argocd:v2.4.7
+    # newName: ghcr.io/thisisqubika/argocd:latest # This is an example of how to change the image -> if we want to have our own protected version of the image
+    # newTag: v2.5.3-0
+
+patchesStrategicMerge:
+  - argocd-rbac-cm.patch.yaml
+  - argocd-cm.patch.yaml
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/command/-
+        value: --insecure

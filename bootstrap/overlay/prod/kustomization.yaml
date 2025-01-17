@@ -1,0 +1,28 @@
+resources:
+- ../../bases/namespaces
+- ../../bases/argocd
+
+generators:
+- ./secret-generator.yaml
+
+patches:
+- target:
+    kind: ApplicationSet
+    name: general
+  patch: |-
+    - op: replace
+      path: /spec/generators/0/git/directories/0/path
+      value: 'addons/**/qubika'
+    - op: replace
+      path: /spec/generators/0/git/directories/1/path
+      value: 'services/**/qubika'
+- target:
+    kind: Ingress
+    name: argocd
+  patch: |-
+    - op: replace
+      path: /spec/tls/0/hosts/0
+      value: 'argocd.qubikatrainning.work.gd'
+    - op: replace
+      path: /spec/rules/0/host
+      value: 'argocd.qubikatrainning.work.gd'

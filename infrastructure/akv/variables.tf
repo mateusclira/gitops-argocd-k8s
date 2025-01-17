@@ -1,0 +1,3 @@
+variable "cname" {}
+
+variable "region" {}

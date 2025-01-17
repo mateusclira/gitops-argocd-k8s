@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet # Here in this file we create the applications that will be deployed in the cluster
+metadata:
+  name: general
+spec:
+  # generator should be defined under overlay
+  generators:
+    - git:
+        repoURL: https://github.com/thisisqubika/aks-argocd.git # This repository would be created if it does not exist
+        revision: HEAD
+        directories:
+          - path: "change-me"
+          - path: "change-me"
+  template:
+    metadata:
+      name: "{{path[1]}}"
+    spec:
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
+      project: "{{path[0]}}"
+      source:
+        repoURL: https://github.com/thisisqubika/aks-argocd.git
+        targetRevision: HEAD
+        path: "{{path[0]}}/{{path[1]}}" # Here we are setting the path to the application, under deployments. This is the path where the values.yaml and secrets.yaml are located
+        helm:
+          releaseName: "{{path[1]}}"
+          valueFiles:
+            - "/{{path[0]}}/{{path[1]}}/values.yaml"
+            - "/{{path}}/values.yaml"
+            - "/{{path}}/secrets.yaml" # This line means that secrets.yaml should exist in order to the application to be deployed, even if it is empty
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path[0]}}"
